@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\torgi\\OneDrive - BYU-Idaho\\Documents\\Git Repo - VS Code\\cse210-articulate-inc\\Unit05\\Unit05.csproj": {}
+    "C:\\Users\\torgi\\OneDrive - BYU-Idaho\\Documents\\Git Repo - VS Code\\cse210---Cycles\\Unit05 - Developer\\Unit05.csproj": {}
   },
   "projects": {
-    "C:\\Users\\torgi\\OneDrive - BYU-Idaho\\Documents\\Git Repo - VS Code\\cse210-articulate-inc\\Unit05\\Unit05.csproj": {
+    "C:\\Users\\torgi\\OneDrive - BYU-Idaho\\Documents\\Git Repo - VS Code\\cse210---Cycles\\Unit05 - Developer\\Unit05.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\torgi\\OneDrive - BYU-Idaho\\Documents\\Git Repo - VS Code\\cse210-articulate-inc\\Unit05\\Unit05.csproj",
+        "projectUniqueName": "C:\\Users\\torgi\\OneDrive - BYU-Idaho\\Documents\\Git Repo - VS Code\\cse210---Cycles\\Unit05 - Developer\\Unit05.csproj",
         "projectName": "Unit05",
-        "projectPath": "C:\\Users\\torgi\\OneDrive - BYU-Idaho\\Documents\\Git Repo - VS Code\\cse210-articulate-inc\\Unit05\\Unit05.csproj",
+        "projectPath": "C:\\Users\\torgi\\OneDrive - BYU-Idaho\\Documents\\Git Repo - VS Code\\cse210---Cycles\\Unit05 - Developer\\Unit05.csproj",
         "packagesPath": "C:\\Users\\torgi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\torgi\\OneDrive - BYU-Idaho\\Documents\\Git Repo - VS Code\\cse210-articulate-inc\\Unit05\\obj\\",
+        "outputPath": "C:\\Users\\torgi\\OneDrive - BYU-Idaho\\Documents\\Git Repo - VS Code\\cse210---Cycles\\Unit05 - Developer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\torgi\\AppData\\Roaming\\NuGet\\NuGet.Config"
