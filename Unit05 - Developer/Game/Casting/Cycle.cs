@@ -118,5 +118,13 @@ namespace Unit05.Game.Casting
                 _segments.Add(segment);
             }
         }
+
+        /// <summary>
+        /// Shortens the trail by 1.
+        /// </summary>
+        public void ShortenTrail()
+        {
+            _segments.RemoveAt(-1);
+        }
     }
 }
