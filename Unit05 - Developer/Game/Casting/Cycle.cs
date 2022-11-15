@@ -8,16 +8,16 @@ namespace Unit05.Game.Casting
     /// <para>A long limbless reptile.</para>
     /// <para>The responsibility of Snake is to move itself.</para>
     /// </summary>
-    public class Snake : Actor
+    public class Cycle : Actor
     {
         private List<Actor> _segments = new List<Actor>();
 
         /// <summary>
         /// Constructs a new instance of a Snake.
         /// </summary>
-        public Snake()
+        public Cycle()
         {
-            PrepareBody();
+            PrepareCycle();
         }
 
         /// <summary>
@@ -55,10 +55,10 @@ namespace Unit05.Game.Casting
         {
             for (int i = 0; i < numberOfSegments; i++)
             {
-                Actor tail = _segments.Last<Actor>();
-                Point velocity = tail.GetVelocity();
+                Actor trail = _segments.Last<Actor>();
+                Point velocity = trail.GetVelocity();
                 Point offset = velocity.Reverse();
-                Point position = tail.GetPosition().Add(offset);
+                Point position = trail.GetPosition().Add(offset);
 
                 Actor segment = new Actor();
                 segment.SetPosition(position);
@@ -98,7 +98,7 @@ namespace Unit05.Game.Casting
         /// <summary>
         /// Prepares the snake body for moving.
         /// </summary>
-        private void PrepareBody()
+        private void PrepareCycle()
         {
             int x = Constants.MAX_X / 2;
             int y = Constants.MAX_Y / 2;

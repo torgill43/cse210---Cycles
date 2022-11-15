@@ -9,14 +9,14 @@ namespace Unit05.Game.Casting
     /// The responsibility of Food is to select a random position and points that it's worth.
     /// </para>
     /// </summary>
-    public class Food : Actor
+    public class Fuel : Actor
     {
         private int _points = 0;
 
         /// <summary>
         /// Constructs a new instance of an Food.
         /// </summary>
-        public Food()
+        public Fuel()
         {
             SetText("@");
             SetColor(Constants.RED); 

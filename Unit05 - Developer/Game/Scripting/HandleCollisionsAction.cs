@@ -42,16 +42,16 @@ namespace Unit05.Game.Scripting
         /// <param name="cast">The cast of actors.</param>
         private void HandleFoodCollisions(Cast cast)
         {
-            Snake snake = (Snake)cast.GetFirstActor("snake");
+            Cycle cycle = (Cycle)cast.GetFirstActor("cycle");
             Score score = (Score)cast.GetFirstActor("score");
-            Food food = (Food)cast.GetFirstActor("food");
+            Fuel fuel = (Fuel)cast.GetFirstActor("fuel");
             
-            if (snake.GetHead().GetPosition().Equals(food.GetPosition()))
+            if (cycle.GetHead().GetPosition().Equals(fuel.GetPosition()))
             {
-                int points = food.GetPoints();
-                snake.GrowTail(points);
+                int points = fuel.GetPoints();
+                cycle.GrowTail(points);
                 score.AddPoints(points);
-                food.Reset();
+                fuel.Reset();
             }
         }
 
@@ -61,9 +61,9 @@ namespace Unit05.Game.Scripting
         /// <param name="cast">The cast of actors.</param>
         private void HandleSegmentCollisions(Cast cast)
         {
-            Snake snake = (Snake)cast.GetFirstActor("snake");
-            Actor head = snake.GetHead();
-            List<Actor> body = snake.GetBody();
+            Cycle cycle = (Cycle)cast.GetFirstActor("cycle");
+            Actor head = cycle.GetHead();
+            List<Actor> body = cycle.GetBody();
 
             foreach (Actor segment in body)
             {
@@ -78,9 +78,9 @@ namespace Unit05.Game.Scripting
         {
             if (_isGameOver == true)
             {
-                Snake snake = (Snake)cast.GetFirstActor("snake");
-                List<Actor> segments = snake.GetSegments();
-                Food food = (Food)cast.GetFirstActor("food");
+                Cycle cycle = (Cycle)cast.GetFirstActor("cycle");
+                List<Actor> segments = cycle.GetSegments();
+                Fuel fuel = (Fuel)cast.GetFirstActor("fuel");
 
                 // create a "game over" message
                 int x = Constants.MAX_X / 2;
@@ -97,7 +97,7 @@ namespace Unit05.Game.Scripting
                 {
                     segment.SetColor(Constants.WHITE);
                 }
-                food.SetColor(Constants.WHITE);
+                fuel.SetColor(Constants.WHITE);
             }
         }
 
