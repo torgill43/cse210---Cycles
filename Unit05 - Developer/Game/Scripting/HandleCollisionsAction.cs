@@ -48,7 +48,7 @@ namespace Unit05.Game.Scripting
             
             if (cycle.GetHead().GetPosition().Equals(fuel.GetPosition()))
             {
-                int points = fuel.GetPoints();
+                int points = fuel.GetValue();
                 cycle.GrowTail(points);
                 score.AddPoints(points);
                 fuel.Reset();
