@@ -17,6 +17,7 @@ namespace Unit05.Game.Scripting
     public class HandleCollisionsAction : Action
     {
         private bool _isGameOver = false;
+        private int _winner;
 
         /// <summary>
         /// Constructs a new instance of HandleCollisionsAction.
@@ -42,16 +43,17 @@ namespace Unit05.Game.Scripting
         /// <param name="cast">The cast of actors.</param>
         private void HandleFoodCollisions(Cast cast)
         {
-            Cycle cycle = (Cycle)cast.GetFirstActor("cycle");
-            Score score = (Score)cast.GetFirstActor("score");
+            List<Actor> cycles = cast.GetActors("cycle");
             Fuel fuel = (Fuel)cast.GetFirstActor("fuel");
             
-            if (cycle.GetHead().GetPosition().Equals(fuel.GetPosition()))
+            foreach (Cycle cycle in cycles)
             {
-                int points = fuel.GetValue();
-                cycle.GrowTail(points);
-                score.AddPoints(points);
-                fuel.Reset();
+                if (cycle.GetHead().GetPosition().Equals(fuel.GetPosition()))
+                {
+                    int points = fuel.GetValue();
+                    cycle.GrowTail(points);
+                    fuel.Reset();
+                }
             }
         }
 
@@ -61,25 +63,47 @@ namespace Unit05.Game.Scripting
         /// <param name="cast">The cast of actors.</param>
         private void HandleSegmentCollisions(Cast cast)
         {
-            Cycle cycle = (Cycle)cast.GetFirstActor("cycle");
-            Actor head = cycle.GetHead();
-            List<Actor> body = cycle.GetBody();
-
-            foreach (Actor segment in body)
+            List<Actor> cycles = cast.GetActors("cycle");
+            foreach (Cycle cycle in cycles)
             {
-                if (segment.GetPosition().Equals(head.GetPosition()))
+                int player = cycle.GetPlayer();
+                Actor head = cycle.GetHead();
+                Cycle otherCycle = (Cycle)cycles[2 - player];
+                List<Actor> otherBody = otherCycle.GetBody();
+                foreach (Actor segment in otherBody)
                 {
-                    _isGameOver = true;
+                    if (segment.GetPosition().Equals(head.GetPosition()))
+                    {
+                        _winner = 3 - player;
+                        _isGameOver = true;
+                    }
                 }
             }
+
+
+
+            // Cycle cycle = (Cycle)cast.GetFirstActor("cycle");
+            // Actor head = cycle.GetHead();
+            // List<Actor> body = cycle.GetBody();
+
+            // foreach (Actor segment in body)
+            // {
+            //     if (segment.GetPosition().Equals(head.GetPosition()))
+            //     {
+            //         _isGameOver = true;
+            //     }
+            // }
         }
 
         private void HandleGameOver(Cast cast)
         {
             if (_isGameOver == true)
             {
-                Cycle cycle = (Cycle)cast.GetFirstActor("cycle");
-                List<Actor> segments = cycle.GetSegments();
+                List<Actor> segments = new List<Actor>();
+                foreach (Cycle cycle in cast.GetActors("cycle"))
+                {
+                    segments.AddRange(cycle.GetSegments());
+                }
                 Fuel fuel = (Fuel)cast.GetFirstActor("fuel");
 
                 // create a "game over" message

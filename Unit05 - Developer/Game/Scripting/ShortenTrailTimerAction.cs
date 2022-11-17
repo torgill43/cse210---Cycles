@@ -29,7 +29,7 @@ namespace Unit05.Game.Scripting
             }
             else
             {
-                foreach (Cycle cycle in cast.GetActors("cycles"))
+                foreach (Cycle cycle in cast.GetActors("cycle"))
                 {
                     cycle.ShortenTrail();
                 }

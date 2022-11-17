@@ -11,12 +11,14 @@ namespace Unit05.Game.Casting
     public class Cycle : Actor
     {
         private List<Actor> _segments = new List<Actor>();
+        private int _player;
 
         /// <summary>
         /// Constructs a new instance of a Snake.
         /// </summary>
-        public Cycle()
+        public Cycle(int player)
         {
+            this._player = player;
             PrepareCycle();
         }
 
@@ -64,7 +66,7 @@ namespace Unit05.Game.Casting
                 segment.SetPosition(position);
                 segment.SetVelocity(velocity);
                 segment.SetText("#");
-                segment.SetColor(Constants.GREEN);
+                segment.SetColor(_player == 1 ? Constants.CYAN : Constants.RED);
                 _segments.Add(segment);
             }
         }
@@ -100,15 +102,18 @@ namespace Unit05.Game.Casting
         /// </summary>
         private void PrepareCycle()
         {
-            int x = Constants.MAX_X / 2;
+            Random random = new Random();
+            int rand_x = random.Next(1, Constants.MAX_X);
+            rand_x -= rand_x % Constants.CELL_SIZE;
+            int x = rand_x;
             int y = Constants.MAX_Y / 2;
 
             for (int i = 0; i < Constants.SNAKE_LENGTH; i++)
             {
-                Point position = new Point(x - i * Constants.CELL_SIZE, y);
-                Point velocity = new Point(1 * Constants.CELL_SIZE, 0);
-                string text = i == 0 ? "8" : "#";
-                Color color = i == 0 ? Constants.YELLOW : Constants.GREEN;
+                Point position = new Point(x, y - i * Constants.CELL_SIZE);
+                Point velocity = new Point(0, 1 * Constants.CELL_SIZE);
+                string text = (i == 0 ? "8" : "#");
+                Color color = (_player == 1 ? Constants.CYAN : Constants.RED);
 
                 Actor segment = new Actor();
                 segment.SetPosition(position);
@@ -124,7 +129,17 @@ namespace Unit05.Game.Casting
         /// </summary>
         public void ShortenTrail()
         {
-            _segments.RemoveAt(-1);
+            if (GetBody().Count > 3)
+                _segments.RemoveAt(_segments.Count - 1);
+        }
+
+        /// <summary>
+        /// Gets the player number
+        /// </summary>
+        /// <returns>The player's number</returns>
+        public int GetPlayer()
+        {
+            return _player;
         }
     }
 }

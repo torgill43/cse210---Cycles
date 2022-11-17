@@ -1,3 +1,4 @@
+using System;
 using Unit05.Game.Casting;
 using Unit05.Game.Services;
 
@@ -26,33 +27,31 @@ namespace Unit05.Game.Scripting
         /// <inheritdoc/>
         public void Execute(Cast cast, Script script)
         {
-            // left
-            if (_keyboardService.IsKeyDown("leftarrow"))
+            foreach (Cycle cycle in cast.GetActors("cycle"))
             {
-                _direction = new Point(-Constants.CELL_SIZE, 0);
+                
+                int player = cycle.GetPlayer();
+                // left
+                if (_keyboardService.IsKeyDown(player == 1 ? "a" : "j"))
+                {
+                    cycle.TurnHead(new Point(-Constants.CELL_SIZE, 0));
+                }
+                // right
+                if (_keyboardService.IsKeyDown(player == 1 ? "d" : "l"))
+                {
+                    cycle.TurnHead(new Point(Constants.CELL_SIZE, 0));
+                }
+                // up
+                if (_keyboardService.IsKeyDown(player == 1 ? "w" : "i"))
+                {
+                    cycle.TurnHead(new Point(0, -Constants.CELL_SIZE));
+                }
+                // down
+                if (_keyboardService.IsKeyDown(player == 1 ? "s" : "k"))
+                {
+                    cycle.TurnHead(new Point(0, Constants.CELL_SIZE));
+                }
             }
-
-            // right
-            if (_keyboardService.IsKeyDown("rightarrow"))
-            {
-                _direction = new Point(Constants.CELL_SIZE, 0);
-            }
-
-            // up
-            if (_keyboardService.IsKeyDown("uparrow"))
-            {
-                _direction = new Point(0, -Constants.CELL_SIZE);
-            }
-
-            // down
-            if (_keyboardService.IsKeyDown("downarrow"))
-            {
-                _direction = new Point(0, Constants.CELL_SIZE);
-            }
-
-            Cycle cycle = (Cycle)cast.GetFirstActor("cycle");
-            cycle.TurnHead(_direction);
-
         }
     }
 }

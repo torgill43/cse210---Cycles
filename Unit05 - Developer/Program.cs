@@ -21,8 +21,8 @@ namespace Unit05
             // create the cast
             Cast cast = new Cast();
             cast.AddActor("fuel", new Fuel());
-            cast.AddActor("cycle", new Cycle());
-            cast.AddActor("score", new Score());
+            cast.AddActor("cycle", new Cycle(1));
+            cast.AddActor("cycle", new Cycle(2));
 
             // create the services
             KeyboardService keyboardService = new KeyboardService();

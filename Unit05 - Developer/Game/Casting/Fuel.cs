@@ -38,7 +38,7 @@ namespace Unit05.Game.Casting
         public void Reset()
         {
             Random random = new Random();
-            _value = random.Next(9);
+            _value = random.Next(6);
             int x = random.Next(Constants.COLUMNS);
             int y = random.Next(Constants.ROWS);
             Point position = new Point(x, y);
