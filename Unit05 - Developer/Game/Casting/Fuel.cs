@@ -19,7 +19,7 @@ namespace Unit05.Game.Casting
         public Fuel()
         {
             SetText("@");
-            SetColor(Constants.RED); 
+            SetColor(Constants.LIME); 
             Reset();
         }
 

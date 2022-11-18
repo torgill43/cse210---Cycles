@@ -30,6 +30,7 @@ namespace Unit05.Game
         public static Color YELLOW = new Color(255, 255, 0);
         public static Color GREEN = new Color(0, 255, 0);
         public static Color CYAN = new Color(0, 255, 255);
+        public static Color LIME = new Color(150, 255, 0);
     }
 }
 

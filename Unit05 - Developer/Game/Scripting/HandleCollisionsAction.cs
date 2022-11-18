@@ -50,8 +50,8 @@ namespace Unit05.Game.Scripting
             {
                 if (cycle.GetHead().GetPosition().Equals(fuel.GetPosition()))
                 {
-                    int points = fuel.GetValue();
-                    cycle.GrowTail(points);
+                    int value = fuel.GetValue();
+                    cycle.GrowTail(value);
                     fuel.Reset();
                 }
             }
@@ -79,51 +79,40 @@ namespace Unit05.Game.Scripting
                     }
                 }
             }
-
-
-
-            // Cycle cycle = (Cycle)cast.GetFirstActor("cycle");
-            // Actor head = cycle.GetHead();
-            // List<Actor> body = cycle.GetBody();
-
-            // foreach (Actor segment in body)
-            // {
-            //     if (segment.GetPosition().Equals(head.GetPosition()))
-            //     {
-            //         _isGameOver = true;
-            //     }
-            // }
         }
 
         private void HandleGameOver(Cast cast)
         {
             if (_isGameOver == true)
             {
-                List<Actor> segments = new List<Actor>();
-                foreach (Cycle cycle in cast.GetActors("cycle"))
-                {
-                    segments.AddRange(cycle.GetSegments());
-                }
                 Fuel fuel = (Fuel)cast.GetFirstActor("fuel");
 
-                // create a "game over" message
+                // create a "winner" message
                 int x = Constants.MAX_X / 2;
                 int y = Constants.MAX_Y / 2;
                 Point position = new Point(x, y);
 
                 Actor message = new Actor();
-                message.SetText("Game Over!");
+                message.SetText($"Player {_winner} wins!");
                 message.SetPosition(position);
                 cast.AddActor("messages", message);
 
-                // make everything white
-                foreach (Actor segment in segments)
+                // Later we will make this color the same as winner
+
+                // make loser white
+                foreach (Cycle cycle in cast.GetActors("cycle"))
                 {
-                    segment.SetColor(Constants.WHITE);
+                    if (cycle.GetPlayer() != _winner)
+                    {
+                        List<Actor> segments = cycle.GetSegments();
+                        foreach (Actor segment in segments)
+                        {
+                            segment.SetColor(Constants.WHITE);
+                        }
+                    }
                 }
                 fuel.SetColor(Constants.WHITE);
             }
         }
-
     }
 }

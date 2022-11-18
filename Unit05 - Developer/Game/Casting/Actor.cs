@@ -13,7 +13,7 @@ namespace Unit05.Game.Casting
     public class Actor
     {
         private string _text = "";
-        private int _fontSize = 15;
+        private int _fontSize = Constants.FONT_SIZE;
         private Color _color = Constants.WHITE;
         private Point _position = new Point(0, 0);
         private Point _velocity = new Point(0, 0);
