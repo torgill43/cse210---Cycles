@@ -6,9 +6,9 @@ using Unit05.Game.Services;
 namespace Unit05.Game.Scripting
 {
     /// <summary>
-    /// <para>An input action that controls the snake.</para>
+    /// <para>An input action that controls the cycle.</para>
     /// <para>
-    /// The responsibility of ControlActorsAction is to get the direction and move the snake's head.
+    /// The responsibility of ControlActorsAction is to get the direction and move the cycle.
     /// </para>
     /// </summary>
     public class ControlActorsAction : Action

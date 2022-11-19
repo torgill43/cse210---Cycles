@@ -4,7 +4,7 @@ using System;
 namespace Unit05.Game.Casting
 {
     /// <summary>
-    /// <para>A tasty item that snakes like to eat.</para>
+    /// <para>Fuel for the cycle.</para>
     /// <para>
     /// The responsibility of Fuel is to select a random position and value that it's worth.
     /// </para>
@@ -14,7 +14,7 @@ namespace Unit05.Game.Casting
         private int _value = 0;
 
         /// <summary>
-        /// Constructs a new instance of an Food.
+        /// Constructs a new instance of Fuel.
         /// </summary>
         public Fuel()
         {
