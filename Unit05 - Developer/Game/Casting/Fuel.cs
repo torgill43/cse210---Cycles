@@ -33,7 +33,7 @@ namespace Unit05.Game.Casting
         }
 
         /// <summary>
-        /// Selects a random position and value that the food is worth.
+        /// Selects a random position and value that the fuel is worth.
         /// </summary>
         public void Reset()
         {

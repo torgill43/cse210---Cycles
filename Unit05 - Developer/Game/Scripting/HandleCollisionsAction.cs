@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Data;
 using Unit05.Game.Casting;
-using Unit05.Game.Services;
 
 
 namespace Unit05.Game.Scripting
@@ -31,7 +28,7 @@ namespace Unit05.Game.Scripting
         {
             if (_isGameOver == false)
             {
-                HandleFoodCollisions(cast);
+                HandleFuelCollisions(cast);
                 HandleSegmentCollisions(cast);
                 HandleGameOver(cast);
             }
@@ -41,7 +38,7 @@ namespace Unit05.Game.Scripting
         /// Growls the trail of a cycle if the a cycle collides with a fuel.
         /// </summary>
         /// <param name="cast">The cast of actors.</param>
-        private void HandleFoodCollisions(Cast cast)
+        private void HandleFuelCollisions(Cast cast)
         {
             List<Actor> cycles = cast.GetActors("cycle");
             Fuel fuel = (Fuel)cast.GetFirstActor("fuel");
@@ -81,6 +78,10 @@ namespace Unit05.Game.Scripting
             }
         }
 
+        /// <summary>
+        /// End the game and display the winner.
+        /// </summary>
+        /// <param name="cast">The cast of actors.</param>
         private void HandleGameOver(Cast cast)
         {
             if (_isGameOver == true)
@@ -95,9 +96,8 @@ namespace Unit05.Game.Scripting
                 Actor message = new Actor();
                 message.SetText($"Player {_winner} wins!");
                 message.SetPosition(position);
+                message.SetColor(_winner == 1 ? Constants.CYAN : Constants.RED);
                 cast.AddActor("messages", message);
-
-                // Later we will make this color the same as winner
 
                 // make loser white
                 foreach (Cycle cycle in cast.GetActors("cycle"))

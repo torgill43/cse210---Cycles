@@ -1,4 +1,3 @@
-using System;
 using Unit05.Game.Casting;
 using Unit05.Game.Services;
 
@@ -29,7 +28,6 @@ namespace Unit05.Game.Scripting
         {
             foreach (Cycle cycle in cast.GetActors("cycle"))
             {
-                
                 int player = cycle.GetPlayer();
                 // left
                 if (_keyboardService.IsKeyDown(player == 1 ? "a" : "j"))

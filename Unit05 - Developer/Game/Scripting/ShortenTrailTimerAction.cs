@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Unit05.Game.Casting;
+
 
 namespace Unit05.Game.Scripting
 {
@@ -11,8 +11,9 @@ namespace Unit05.Game.Scripting
     {
         private int _defaultTimer;
         private int _timer;
+
         /// <summary>
-        /// Cosntructs a new instance of ShortenTrailTimerAction
+        /// Constructs a new instance of ShortenTrailTimerAction
         /// </summary>
         public ShortenTrailTimerAction(int defaultTimer)
         {

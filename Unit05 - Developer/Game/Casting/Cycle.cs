@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace Unit05.Game.Casting
 {
     /// <summary>
@@ -91,7 +92,7 @@ namespace Unit05.Game.Casting
         /// <summary>
         /// Turns the head of the cycle in the given direction.
         /// </summary>
-        /// <param name="velocity">The given direction.</param>
+        /// <param name="direction">The given direction.</param>
         public void TurnHead(Point direction)
         {
             _segments[0].SetVelocity(direction);
@@ -108,7 +109,7 @@ namespace Unit05.Game.Casting
             int x = rand_x;
             int y = Constants.MAX_Y / 2;
 
-            for (int i = 0; i < Constants.SNAKE_LENGTH; i++)
+            for (int i = 0; i < Constants.CYCLE_LENGTH; i++)
             {
                 Point position = new Point(x, y - i * Constants.CELL_SIZE);
                 Point velocity = new Point(0, 1 * Constants.CELL_SIZE);

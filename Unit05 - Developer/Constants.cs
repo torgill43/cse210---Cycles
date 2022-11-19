@@ -1,6 +1,5 @@
-using System;
-using Microsoft.VisualBasic;
 using Unit05.Game.Casting;
+
 
 namespace Unit05.Game
 {
@@ -21,7 +20,7 @@ namespace Unit05.Game
         public static int FRAME_RATE = 15;
         public static int FONT_SIZE = 15;
         public static string CAPTION = "Snake";
-        public static int SNAKE_LENGTH = 8;
+        public static int CYCLE_LENGTH = 8;
         /// <summary>Default length decrement timer</summary>
         public static int DLDT = 60;
 
